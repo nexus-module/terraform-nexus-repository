@@ -1,6 +1,6 @@
 # Nexus Repository
 
-This module allows you to create **Nexus Repository as a global resource** and **individual Nexus Repository resources.** For individual examples, see the usage snippets and [examples](https://github.com/devops-ia/terraform-nexus-repository/tree/main/examples).
+This module allows you to create **Nexus Repository as a global resource** and **individual Nexus Repository resources.** For individual examples, see the usage snippets and [examples](https://github.com/nexus-module/terraform-nexus-repository/tree/main/examples).
 
 ## Provider
 You need use a [Nexus provider](https://registry.terraform.io/providers/datadrivers/nexus/latest/docs).
@@ -19,7 +19,7 @@ provider "nexus" {
 
 ```hcl
 module "nexus_repository" {
-  source  = "devops-ia/repository/nexus"
+  source  = "nexus-module/repository/nexus"
 
   nexus_repository_apt_hosted = [
     {
@@ -43,7 +43,7 @@ module "nexus_repository" {
       }
     }
   ]
-  
+
   nexus_repository_apt_proxy = [
     {
       name         = "apt-proxy"
@@ -86,7 +86,7 @@ module "nexus_repository" {
       }
     }
   ]
-  
+
   nexus_repository_bower_group = [
     {
       name   = "bower-group"
@@ -103,7 +103,7 @@ module "nexus_repository" {
       }
     }
   ]
-  
+
   nexus_repository_bower_hosted = [
     {
       name   = "bower-hosted"
@@ -121,7 +121,7 @@ module "nexus_repository" {
       }
     }
   ]
-  
+
   nexus_repository_bower_proxy = [
     {
       name                 = "bower-proxy"
@@ -146,12 +146,12 @@ module "nexus_repository" {
       }
     }
   ]
-  
+
   nexus_repository_cocoapods_proxy = [
     {
       name   = "cocoapods-proxy"
       online = true
-  
+
       storage = {
         blob_store_name                = "default"
         strict_content_type_validation = true
@@ -171,12 +171,12 @@ module "nexus_repository" {
       }
     }
   ]
-  
+
   nexus_repository_conan_proxy = [
     {
       name   = "conan-proxy"
       online = true
-  
+
       storage = {
         blob_store_name                = "default"
         strict_content_type_validation = true
@@ -196,7 +196,7 @@ module "nexus_repository" {
       }
     }
   ]
-  
+
   nexus_repository_conda_proxy = [
     {
       name   = "conda-proxy"
@@ -220,7 +220,7 @@ module "nexus_repository" {
       }
     }
   ]
-  
+
   nexus_repository_docker_group = [
     {
       name   = "docker-group"
@@ -245,7 +245,7 @@ module "nexus_repository" {
       }
     }
   ]
-  
+
   nexus_repository_docker_hosted = [
     {
       name   = "docker-hosted"
@@ -262,7 +262,7 @@ module "nexus_repository" {
       }
     }
   ]
-  
+
   nexus_repository_docker_proxy = [
     {
       name   = "docker-proxy"
@@ -294,7 +294,7 @@ module "nexus_repository" {
       }
     }
   ]
-  
+
   nexus_repository_gitlfs_hosted = [
     {
       name   = "gitlfs-internal"
@@ -306,7 +306,7 @@ module "nexus_repository" {
       }
     }
   ]
-  
+
   nexus_repository_go_group = [
     {
       name   = "go-group"
@@ -323,7 +323,7 @@ module "nexus_repository" {
       }
     }
   ]
-  
+
   nexus_repository_go_proxy = [
     {
       name   = "docker-proxy"
@@ -347,7 +347,7 @@ module "nexus_repository" {
       }
     }
   ]
-  
+
   nexus_repository_helm_hosted = [
     {
       name   = "helm-internal"
@@ -359,7 +359,7 @@ module "nexus_repository" {
       }
     }
   ]
-  
+
   nexus_repository_helm_proxy = [
     {
       name   = "helm-proxy"
@@ -383,7 +383,7 @@ module "nexus_repository" {
       }
     }
   ]
-  
+
   nexus_repository_maven_group = [
     {
       name   = "maven-group"
@@ -400,7 +400,7 @@ module "nexus_repository" {
       }
     }
   ]
-  
+
   nexus_repository_maven_hosted = [
     {
       name   = "maven-releases"
@@ -417,7 +417,7 @@ module "nexus_repository" {
       }
     }
   ]
-  
+
   nexus_repository_maven_proxy = [
     {
       name   = "maven-central-repo1"
@@ -461,7 +461,7 @@ module "nexus_repository" {
       }
     }
   ]
-  
+
   nexus_repository_npm_hosted = [
     {
       name   = "npm-hosted"
@@ -476,7 +476,7 @@ module "nexus_repository" {
       }
     }
   ]
-  
+
   nexus_repository_npm_proxy = [
     {
       name   = "npm-proxy"
@@ -500,7 +500,7 @@ module "nexus_repository" {
       }
     }
   ]
-  
+
   nexus_repository_nuget_group = [
     {
       name   = "nuget-group"
@@ -517,7 +517,7 @@ module "nexus_repository" {
       }
     }
   ]
-  
+
   nexus_repository_nuget_hosted = [
     {
       name   = "nuget-internal"
@@ -529,7 +529,7 @@ module "nexus_repository" {
       }
     }
   ]
-  
+
   nexus_repository_nuget_proxy = [
     {
       name                     = "nuget-proxy"
@@ -555,7 +555,7 @@ module "nexus_repository" {
       }
     }
   ]
-  
+
   nexus_repository_p2_proxy = [
     {
       name   = "p2-proxy"
@@ -579,7 +579,7 @@ module "nexus_repository" {
       }
     }
   ]
-  
+
   nexus_repository_pypi_group = [
     {
       name   = "pypi-group"
@@ -596,7 +596,7 @@ module "nexus_repository" {
       }
     }
   ]
-  
+
   nexus_repository_pypi_hosted = [
     {
       name   = "nuget-internal"
@@ -608,7 +608,7 @@ module "nexus_repository" {
       }
     }
   ]
-  
+
   nexus_repository_pypi_proxy = [
     {
       name   = "pypi-proxy"
@@ -632,7 +632,7 @@ module "nexus_repository" {
       }
     }
   ]
-  
+
   nexus_repository_r_group = [
     {
       name   = "r-group"
@@ -649,7 +649,7 @@ module "nexus_repository" {
       }
     }
   ]
-  
+
   nexus_repository_r_hosted = [
     {
       name   = "r-hosted"
@@ -661,7 +661,7 @@ module "nexus_repository" {
       }
     }
   ]
-  
+
   nexus_repository_r_proxy = [
     {
       name   = "r-proxy"
@@ -685,7 +685,7 @@ module "nexus_repository" {
       }
     }
   ]
-  
+
   nexus_repository_raw_group = [
     {
       name   = "raw-group"
@@ -702,7 +702,7 @@ module "nexus_repository" {
       }
     }
   ]
-  
+
   nexus_repository_raw_hosted = [
     {
       name   = "raw-hosted"
@@ -714,7 +714,7 @@ module "nexus_repository" {
       }
     }
   ]
-  
+
   nexus_repository_raw_proxy = [
     {
       name   = "raw-proxy"
@@ -738,7 +738,7 @@ module "nexus_repository" {
       }
     }
   ]
-  
+
   nexus_repository_rubygems_group = [
     {
       name   = "rubygems-group"
@@ -755,7 +755,7 @@ module "nexus_repository" {
       }
     }
   ]
-  
+
   nexus_repository_rubygems_hosted = [
     {
       name   = "rubygems-hosted"
@@ -767,7 +767,7 @@ module "nexus_repository" {
       }
     }
   ]
-  
+
   nexus_repository_rubygems_proxy = [
     {
       name   = "rubygems-proxy"
@@ -791,7 +791,7 @@ module "nexus_repository" {
       }
     }
   ]
-  
+
   nexus_repository_yum_group = [
     {
       name   = "yum-group"
@@ -808,7 +808,7 @@ module "nexus_repository" {
       }
     }
   ]
-  
+
   nexus_repository_yum_hosted = [
     {
       deploy_policy  = "STRICT"
@@ -825,7 +825,7 @@ module "nexus_repository" {
       }
     }
   ]
-  
+
   nexus_repository_yum_proxy = [
     {
       name   = "rubygems-proxy"
@@ -859,8 +859,8 @@ module "nexus_repository" {
 
 ```hcl
 module "nexus_repository_apt_hosted" {
-  source  = "devops-ia/repository/nexus//modules/nexus-repository-apt-hosted"
-  
+  source  = "nexus-module/repository/nexus//modules/nexus-repository-apt-hosted"
+
   name   = "apt-hosted"
   online = true
 
@@ -891,8 +891,8 @@ module "nexus_repository_apt_hosted" {
 
 ```hcl
 module "nexus_repository_apt_proxy" {
-  source  = "devops-ia/repository/nexus//modules/nexus-repository-apt-proxy"
-  
+  source  = "nexus-module/repository/nexus//modules/nexus-repository-apt-proxy"
+
   name   = "apt-proxy"
   online = true
 
@@ -946,8 +946,8 @@ module "nexus_repository_apt_proxy" {
 
 ```hcl
 module "nexus_repository_bower_group" {
-  source  = "devops-ia/repository/nexus//modules/nexus-repository-bower-group"
-  
+  source  = "nexus-module/repository/nexus//modules/nexus-repository-bower-group"
+
   name   = "bower-group"
   online = true
 
@@ -969,8 +969,8 @@ module "nexus_repository_bower_group" {
 
 ```hcl
 module "nexus_repository_bower_hosted" {
-  source  = "devops-ia/repository/nexus//modules/nexus-repository-bower-hosted"
-  
+  source  = "nexus-module/repository/nexus//modules/nexus-repository-bower-hosted"
+
   name   = "bower-hosted"
   online = true
 
@@ -994,8 +994,8 @@ module "nexus_repository_bower_hosted" {
 
 ```hcl
 module "nexus_repository_bower_proxy" {
-  source  = "devops-ia/repository/nexus//modules/nexus-repository-bower-proxy"
-  
+  source  = "nexus-module/repository/nexus//modules/nexus-repository-bower-proxy"
+
   name   = "bower-proxy"
   online = true
 
@@ -1028,8 +1028,8 @@ module "nexus_repository_bower_proxy" {
 
 ```hcl
 module "nexus_repository_cocoapods_proxy" {
-  source  = "devops-ia/repository/nexus//modules/nexus-repository-cocoapods-proxy"
-  
+  source  = "nexus-module/repository/nexus//modules/nexus-repository-cocoapods-proxy"
+
   name   = "cocoapods-proxy"
   online = true
 
@@ -1060,8 +1060,8 @@ module "nexus_repository_cocoapods_proxy" {
 
 ```hcl
 module "nexus_repository_conan_proxy" {
-  source  = "devops-ia/repository/nexus//modules/nexus-repository-conan-proxy"
-  
+  source  = "nexus-module/repository/nexus//modules/nexus-repository-conan-proxy"
+
   name   = "conan-proxy"
   online = true
 
@@ -1092,8 +1092,8 @@ module "nexus_repository_conan_proxy" {
 
 ```hcl
 module "nexus_repository_conda_proxy" {
-  source  = "devops-ia/repository/nexus//modules/nexus-repository-conda-proxy"
-  
+  source  = "nexus-module/repository/nexus//modules/nexus-repository-conda-proxy"
+
   name   = "conda-proxy"
   online = true
 
@@ -1124,8 +1124,8 @@ module "nexus_repository_conda_proxy" {
 
 ```hcl
 module "nexus_repository_docker_group" {
-  source  = "devops-ia/repository/nexus//modules/nexus-repository-docker-group"
-  
+  source  = "nexus-module/repository/nexus//modules/nexus-repository-docker-group"
+
   name   = "docker-group"
   online = true
 
@@ -1156,8 +1156,8 @@ module "nexus_repository_docker_group" {
 
 ```hcl
 module "nexus_repository_docker_hosted" {
-  source  = "devops-ia/repository/nexus//modules/nexus-repository-docker-hosted"
-  
+  source  = "nexus-module/repository/nexus//modules/nexus-repository-docker-hosted"
+
   name   = "docker-hosted"
   online = true
 
@@ -1179,8 +1179,8 @@ module "nexus_repository_docker_hosted" {
 
 ```hcl
 module "nexus_repository_docker_proxy" {
-  source  = "devops-ia/repository/nexus//modules/nexus-repository-docker-proxy"
-  
+  source  = "nexus-module/repository/nexus//modules/nexus-repository-docker-proxy"
+
   name   = "docker-proxy"
   online = true
 
@@ -1221,8 +1221,8 @@ module "nexus_repository_docker_proxy" {
 
 ```hcl
 module "nexus_repository_gitlfs_hosted" {
-  source  = "devops-ia/repository/nexus//modules/nexus-repository-gitlfs-hosted"
-  
+  source  = "nexus-module/repository/nexus//modules/nexus-repository-gitlfs-hosted"
+
   name   = "gitlfs-internal"
   online = true
 
@@ -1238,8 +1238,8 @@ module "nexus_repository_gitlfs_hosted" {
 
 ```hcl
 module "nexus_repository_go_group" {
-  source  = "devops-ia/repository/nexus//modules/nexus-repository-go-group"
-  
+  source  = "nexus-module/repository/nexus//modules/nexus-repository-go-group"
+
   name   = "go-group"
   online = true
 
@@ -1261,8 +1261,8 @@ module "nexus_repository_go_group" {
 
 ```hcl
 module "nexus_repository_go_proxy" {
-  source  = "devops-ia/repository/nexus//modules/nexus-repository-go-proxy"
-  
+  source  = "nexus-module/repository/nexus//modules/nexus-repository-go-proxy"
+
   name   = "docker-proxy"
   online = true
 
@@ -1293,8 +1293,8 @@ module "nexus_repository_go_proxy" {
 
 ```hcl
 module "nexus_repository_helm_hosted" {
-  source  = "devops-ia/repository/nexus//modules/nexus-repository-helm-hosted"
-  
+  source  = "nexus-module/repository/nexus//modules/nexus-repository-helm-hosted"
+
   name   = "helm-internal"
   online = true
 
@@ -1310,8 +1310,8 @@ module "nexus_repository_helm_hosted" {
 
 ```hcl
 module "nexus_repository_helm_proxy" {
-  source  = "devops-ia/repository/nexus//modules/nexus-repository-helm-proxy"
-  
+  source  = "nexus-module/repository/nexus//modules/nexus-repository-helm-proxy"
+
   name   = "helm-proxy"
   online = true
 
@@ -1342,8 +1342,8 @@ module "nexus_repository_helm_proxy" {
 
 ```hcl
 module "nexus_repository_maven_group" {
-  source  = "devops-ia/repository/nexus//modules/nexus-repository-maven-group"
-  
+  source  = "nexus-module/repository/nexus//modules/nexus-repository-maven-group"
+
   name   = "maven-group"
   online = true
 
@@ -1365,8 +1365,8 @@ module "nexus_repository_maven_group" {
 
 ```hcl
 module "nexus_repository_maven_hosted" {
-  source  = "devops-ia/repository/nexus//modules/nexus-repository-maven-hosted"
-  
+  source  = "nexus-module/repository/nexus//modules/nexus-repository-maven-hosted"
+
   name   = "maven-releases"
   online = true
 
@@ -1388,8 +1388,8 @@ module "nexus_repository_maven_hosted" {
 
 ```hcl
 module "nexus_repository_maven_proxy" {
-  source  = "devops-ia/repository/nexus//modules/nexus-repository-maven-proxy"
-  
+  source  = "nexus-module/repository/nexus//modules/nexus-repository-maven-proxy"
+
   name   = "maven-central-repo1"
   online = true
 
@@ -1425,8 +1425,8 @@ module "nexus_repository_maven_proxy" {
 
 ```hcl
 module "nexus_repository_npm_group" {
-  source  = "devops-ia/repository/nexus//modules/nexus-repository-npm-group"
-  
+  source  = "nexus-module/repository/nexus//modules/nexus-repository-npm-group"
+
   name   = "npm-group"
   online = true
 
@@ -1448,8 +1448,8 @@ module "nexus_repository_npm_group" {
 
 ```hcl
 module "nexus_repository_npm_hosted" {
-  source  = "devops-ia/repository/nexus//modules/nexus-repository-npm-hosted"
-  
+  source  = "nexus-module/repository/nexus//modules/nexus-repository-npm-hosted"
+
   name   = "npm-hosted"
   online = true
 
@@ -1469,8 +1469,8 @@ module "nexus_repository_npm_hosted" {
 
 ```hcl
 module "nexus_repository_npm_proxy" {
-  source  = "devops-ia/repository/nexus//modules/nexus-repository-npm-proxy"
-  
+  source  = "nexus-module/repository/nexus//modules/nexus-repository-npm-proxy"
+
   name   = "npm-proxy"
   online = true
 
@@ -1501,8 +1501,8 @@ module "nexus_repository_npm_proxy" {
 
 ```hcl
 module "nexus_repository_nuget_group" {
-  source  = "devops-ia/repository/nexus//modules/nexus-repository-uget-group"
-  
+  source  = "nexus-module/repository/nexus//modules/nexus-repository-uget-group"
+
   name   = "nuget-group"
   online = true
 
@@ -1524,8 +1524,8 @@ module "nexus_repository_nuget_group" {
 
 ```hcl
 module "nexus_repository_nuget_hosted" {
-  source  = "devops-ia/repository/nexus//modules/nexus-repository-uget-hosted"
-  
+  source  = "nexus-module/repository/nexus//modules/nexus-repository-uget-hosted"
+
   name   = "nuget-internal"
   online = true
 
@@ -1541,8 +1541,8 @@ module "nexus_repository_nuget_hosted" {
 
 ```hcl
 module "nexus_repository_nuget_proxy" {
-  source  = "devops-ia/repository/nexus//modules/nexus-repository-nuget-proxy"
-  
+  source  = "nexus-module/repository/nexus//modules/nexus-repository-nuget-proxy"
+
   name   = "nuget-proxy"
   online = true
 
@@ -1576,8 +1576,8 @@ module "nexus_repository_nuget_proxy" {
 
 ```hcl
 module "nexus_repository_p2_proxy" {
-  source  = "devops-ia/repository/nexus//modules/nexus-repository-p2-proxy"
-  
+  source  = "nexus-module/repository/nexus//modules/nexus-repository-p2-proxy"
+
   name   = "p2-proxy"
   online = true
 
@@ -1608,8 +1608,8 @@ module "nexus_repository_p2_proxy" {
 
 ```hcl
 module "nexus_repository_pypi_proxy" {
-  source  = "devops-ia/repository/nexus//modules/nexus-repository-pypi-proxy"
-  
+  source  = "nexus-module/repository/nexus//modules/nexus-repository-pypi-proxy"
+
   name   = "pypi-group"
   online = true
 
@@ -1631,8 +1631,8 @@ module "nexus_repository_pypi_proxy" {
 
 ```hcl
 module "nexus_repository_pypi_hosted" {
-  source  = "devops-ia/repository/nexus//modules/nexus-repository-pypi-hosted"
-  
+  source  = "nexus-module/repository/nexus//modules/nexus-repository-pypi-hosted"
+
   name   = "nuget-internal"
   online = true
 
@@ -1648,8 +1648,8 @@ module "nexus_repository_pypi_hosted" {
 
 ```hcl
 module "nexus_repository_pypi_proxy" {
-  source  = "devops-ia/repository/nexus//modules/nexus-repository-pypi-proxy"
-  
+  source  = "nexus-module/repository/nexus//modules/nexus-repository-pypi-proxy"
+
   name   = "pypi-proxy"
   online = true
 
@@ -1680,8 +1680,8 @@ module "nexus_repository_pypi_proxy" {
 
 ```hcl
 module "nexus_repository_r_group" {
-  source  = "devops-ia/repository/nexus//modules/nexus-repository-r-group"
-  
+  source  = "nexus-module/repository/nexus//modules/nexus-repository-r-group"
+
   name   = "r-group"
   online = true
 
@@ -1703,8 +1703,8 @@ module "nexus_repository_r_group" {
 
 ```hcl
 module "nexus_repository_r_hosted" {
-  source  = "devops-ia/repository/nexus//modules/nexus-repository-r-hosted"
-  
+  source  = "nexus-module/repository/nexus//modules/nexus-repository-r-hosted"
+
   name   = "r-hosted"
   online = true
 
@@ -1720,8 +1720,8 @@ module "nexus_repository_r_hosted" {
 
 ```hcl
 module "nexus_repository_r_proxy" {
-  source  = "devops-ia/repository/nexus//modules/nexus-repository-r-proxy"
-  
+  source  = "nexus-module/repository/nexus//modules/nexus-repository-r-proxy"
+
   name   = "r-proxy"
   online = true
 
@@ -1752,8 +1752,8 @@ module "nexus_repository_r_proxy" {
 
 ```hcl
 module "nexus_repository_raw_hosted" {
-  source  = "devops-ia/repository/nexus//modules/nexus-repository-raw-hosted"
-  
+  source  = "nexus-module/repository/nexus//modules/nexus-repository-raw-hosted"
+
   name   = "raw-hosted"
   online = true
 
@@ -1769,8 +1769,8 @@ module "nexus_repository_raw_hosted" {
 
 ```hcl
 module "nexus_repository_raw_proxy" {
-  source  = "devops-ia/repository/nexus//modules/nexus-repository-raw-proxy"
-  
+  source  = "nexus-module/repository/nexus//modules/nexus-repository-raw-proxy"
+
   name   = "raw-proxy"
   online = true
 
@@ -1801,8 +1801,8 @@ module "nexus_repository_raw_proxy" {
 
 ```hcl
 module "nexus_repository_rubygems_group" {
-  source  = "devops-ia/repository/nexus//modules/nexus-repository-rubygems-group"
-  
+  source  = "nexus-module/repository/nexus//modules/nexus-repository-rubygems-group"
+
   name   = "rubygems-group"
   online = true
 
@@ -1824,8 +1824,8 @@ module "nexus_repository_rubygems_group" {
 
 ```hcl
 module "nexus_repository_rubygems_hosted" {
-  source  = "devops-ia/repository/nexus//modules/nexus-repository-rubygems-hosted"
-  
+  source  = "nexus-module/repository/nexus//modules/nexus-repository-rubygems-hosted"
+
   name   = "rubygems-hosted"
   online = true
 
@@ -1841,8 +1841,8 @@ module "nexus_repository_rubygems_hosted" {
 
 ```hcl
 module "nexus_repository_rubygems_proxy" {
-  source  = "devops-ia/repository/nexus//modules/nexus-repository-rubygems-proxy"
-  
+  source  = "nexus-module/repository/nexus//modules/nexus-repository-rubygems-proxy"
+
   name   = "rubygems-proxy"
   online = true
 
@@ -1873,8 +1873,8 @@ module "nexus_repository_rubygems_proxy" {
 
 ```hcl
 module "nexus_repository_yum_group" {
-  source  = "devops-ia/repository/nexus//modules/nexus-repository-yum-group"
-  
+  source  = "nexus-module/repository/nexus//modules/nexus-repository-yum-group"
+
   name   = "yum-group"
   online = true
 
@@ -1896,8 +1896,8 @@ module "nexus_repository_yum_group" {
 
 ```hcl
 module "nexus_repository_yum_hosted" {
-  source  = "devops-ia/repository/nexus//modules/nexus-repository-yum-hosted"
-  
+  source  = "nexus-module/repository/nexus//modules/nexus-repository-yum-hosted"
+
   deploy_policy  = "STRICT"
   name           = "yummy1"
   online         = true
@@ -1919,8 +1919,8 @@ module "nexus_repository_yum_hosted" {
 
 ```hcl
 module "nexus_repository_yum_proxy" {
-  source  = "devops-ia/repository/nexus//modules/nexus-repository-yum-proxy"
-  
+  source  = "nexus-module/repository/nexus//modules/nexus-repository-yum-proxy"
+
   name   = "rubygems-proxy"
   online = true
 
@@ -2104,4 +2104,4 @@ No resources.
 
 ## Authors
 
-Module is maintained by [DevOps IA](https://github.com/devops-ia) with help from [these awesome contributors](https://github.com/devops-ia/terraform-nexus-repository/graphs/contributors).
+Module is maintained by [DevOps IA](https://github.com/devops-ia) with help from [these awesome contributors](https://github.com/nexus-module/terraform-nexus-repository/graphs/contributors).

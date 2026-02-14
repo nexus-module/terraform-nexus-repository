@@ -1,0 +1,14 @@
+name: "Validate PR title"
+
+on:
+  pull_request_target:
+    types:
+      - opened
+      - edited
+      - synchronize
+
+jobs:
+  call-workflow:
+    uses: nexus-module/.github/.github/workflows/reusable-pr-title.yml@main
+    secrets:
+      PAT_GITHUB: ${{ secrets.PAT_GITHUB }}

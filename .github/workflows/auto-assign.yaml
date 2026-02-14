@@ -1,20 +1,17 @@
-name: Auto-assign Issue
+name: Auto-assign issue
+
 on:
   issues:
-    types: [opened]
+    types:
+      - opened
   pull_request:
-    types: [opened, edited, synchronize, reopened]
-jobs:
-  run:
-    runs-on: ubuntu-latest
-    permissions:
-      issues: write
-      pull-requests: write
+    types:
+      - opened
 
-    steps:
-      - name: "auto-assign issue"
-        uses: pozil/auto-assign-issue@v2
-        with:
-          repo-token: ${{ secrets.PAT_GITHUB }}
-          teams: devops-ia
-          removePreviousAssignees: true
+jobs:
+  call-workflow:
+    uses: nexus-module/.github/.github/workflows/auto-assign.yml@main
+    with:
+      teams: devops-ia
+    secrets:
+      PAT_GITHUB: ${{ secrets.PAT_GITHUB }}
