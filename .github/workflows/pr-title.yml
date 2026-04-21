@@ -9,6 +9,7 @@ on:
 
 jobs:
   call-workflow:
+    permissions: {}
     uses: nexus-module/.github/.github/workflows/reusable-pr-title.yml@main
     secrets:
       PAT_GITHUB: ${{ secrets.PAT_GITHUB }}

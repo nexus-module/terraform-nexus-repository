@@ -10,6 +10,7 @@ on:
 
 jobs:
   call-workflow:
+    permissions: {}
     uses: nexus-module/.github/.github/workflows/auto-assign.yml@main
     with:
       teams: devops-ia

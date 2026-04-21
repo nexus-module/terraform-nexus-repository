@@ -7,4 +7,6 @@ on:
 
 jobs:
   call-workflow:
+    permissions:
+      contents: read
     uses: nexus-module/.github/.github/workflows/reusable-pre-commit.yml@main

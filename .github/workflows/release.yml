@@ -13,6 +13,8 @@ on:
 
 jobs:
   call-workflow:
+    permissions:
+      contents: read
     uses: nexus-module/.github/.github/workflows/reusable-release.yml@main
     secrets:
       PAT_GITHUB: ${{ secrets.PAT_GITHUB }}
