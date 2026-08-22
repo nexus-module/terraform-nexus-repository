@@ -8,10 +8,19 @@ updates:
     labels:
       - enhancement
       - dependency-management
+    assignees:
+      - ialejandro
+      - amartingarcia
+    groups:
+      github-actions:
+        patterns:
+          - "*"
     commit-message:
-      prefix: "chore"
-    reviewers:
-      - nexus-module/devops-ia
+      prefix: chore
+      include: scope
+    rebase-strategy: auto
+    pull-request-branch-name:
+      separator: "-"
 
   - package-ecosystem: terraform
     directory: "/"
@@ -21,15 +30,16 @@ updates:
     labels:
       - enhancement
       - dependency-management
-    commit-message:
-      prefix: "fix"
-    reviewers:
-      - nexus-module/devops-ia
+    assignees:
+      - ialejandro
+      - amartingarcia
     groups:
-      terraform-minor-patch:
-        update-types:
-          - "minor"
-          - "patch"
-      terraform-major:
-        update-types:
-          - "major"
+      terraform:
+        patterns:
+          - "*"
+    commit-message:
+      prefix: fix
+      include: scope
+    rebase-strategy: auto
+    pull-request-branch-name:
+      separator: "-"

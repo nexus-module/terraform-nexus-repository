@@ -1,0 +1,12 @@
+name: "Mark or close stale issues and PRs"
+
+on:
+  schedule:
+    - cron: "0 0 * * *"
+
+jobs:
+  call-workflow:
+    permissions:
+      issues: write
+      pull-requests: write
+    uses: nexus-module/.github/.github/workflows/github-stale.yml@main

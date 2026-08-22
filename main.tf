@@ -82,6 +82,53 @@ module "nexus_repository_bower_proxy" {
 }
 
 ################################################################################
+# Repository Cargo Group
+################################################################################
+module "nexus_repository_cargo_group" {
+  source = "./modules/nexus-repository-cargo-group"
+
+  for_each = { for r in var.nexus_repository_cargo_group : r.name => r }
+
+  name    = each.value.name
+  online  = each.value.online
+  group   = each.value.group
+  storage = each.value.storage
+}
+
+################################################################################
+# Repository Cargo Hosted
+################################################################################
+module "nexus_repository_cargo_hosted" {
+  source = "./modules/nexus-repository-cargo-hosted"
+
+  for_each = { for r in var.nexus_repository_cargo_hosted : r.name => r }
+
+  name      = each.value.name
+  online    = each.value.online
+  storage   = each.value.storage
+  cleanup   = each.value.cleanup
+  component = each.value.component
+}
+
+################################################################################
+# Repository Cargo Proxy
+################################################################################
+module "nexus_repository_cargo_proxy" {
+  source = "./modules/nexus-repository-cargo-proxy"
+
+  for_each = { for r in var.nexus_repository_cargo_proxy : r.name => r }
+
+  name           = each.value.name
+  online         = each.value.online
+  routing_rule   = each.value.routing_rule
+  storage        = each.value.storage
+  proxy          = each.value.proxy
+  negative_cache = each.value.negative_cache
+  http_client    = each.value.http_client
+  cleanup        = each.value.cleanup
+}
+
+################################################################################
 # Repository Cocoapods Proxy
 ################################################################################
 module "nexus_repository_cocoapods_proxy" {

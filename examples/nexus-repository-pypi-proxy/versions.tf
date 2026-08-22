@@ -6,7 +6,7 @@ terraform {
   required_providers {
     nexus = {
       source  = "datadrivers/nexus"
-      version = ">= 2.0.0"
+      version = ">= 3.0.0"
     }
   }
 }

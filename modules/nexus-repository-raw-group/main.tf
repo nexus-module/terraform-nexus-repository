@@ -1,7 +1,7 @@
 ################################################################################
 # Raw Group
 ################################################################################
-resource "nexus_repository_r_group" "main" {
+resource "nexus_repository_raw_group" "main" {
   name   = var.name
   online = var.online
 
