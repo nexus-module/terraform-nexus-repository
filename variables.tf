@@ -167,6 +167,96 @@ variable "nexus_repository_bower_proxy" {
 }
 
 ################################################################################
+# Repository Cargo Group
+################################################################################
+variable "nexus_repository_cargo_group" {
+  description = "Repository Cargo Group."
+  type = list(object({
+    name   = string
+    online = optional(bool)
+    group = object({
+      member_names = set(string)
+    })
+    storage = object({
+      blob_store_name                = string
+      strict_content_type_validation = optional(bool)
+    })
+  }))
+  default = []
+}
+
+################################################################################
+# Repository Cargo Hosted
+################################################################################
+variable "nexus_repository_cargo_hosted" {
+  description = "Repository Cargo Hosted."
+  type = list(object({
+    name   = string
+    online = optional(bool)
+    storage = object({
+      blob_store_name                = string
+      strict_content_type_validation = bool
+      write_policy                   = optional(string)
+    })
+    cleanup = optional(object({
+      policy_names = optional(set(string))
+    }))
+    component = optional(object({
+      proprietary_components = bool
+    }))
+  }))
+  default = []
+}
+
+################################################################################
+# Repository Cargo Proxy
+################################################################################
+variable "nexus_repository_cargo_proxy" {
+  description = "Repository Cargo Proxy."
+  type = list(object({
+    name         = string
+    online       = optional(bool)
+    routing_rule = optional(string)
+    storage = object({
+      blob_store_name                = string
+      strict_content_type_validation = optional(bool)
+    })
+    proxy = object({
+      remote_url       = string
+      content_max_age  = optional(number)
+      metadata_max_age = optional(number)
+    })
+    negative_cache = optional(object({
+      enabled = optional(bool)
+      ttl     = optional(string)
+    }))
+    http_client = object({
+      blocked    = bool
+      auto_block = bool
+      connection = optional(object({
+        retries                   = optional(number)
+        user_agent_suffix         = optional(string)
+        timeout                   = optional(number)
+        enable_circular_redirects = optional(bool)
+        enable_cookies            = optional(bool)
+        use_trust_store           = optional(bool)
+      }))
+      authentication = optional(object({
+        type        = optional(string)
+        username    = optional(string)
+        password    = optional(string)
+        ntlm_host   = optional(string)
+        ntlm_domain = optional(string)
+      }))
+    })
+    cleanup = optional(object({
+      policy_names = optional(set(string))
+    }))
+  }))
+  default = []
+}
+
+################################################################################
 # Repository Cocoapods Proxy
 ################################################################################
 variable "nexus_repository_cocoapods_proxy" {

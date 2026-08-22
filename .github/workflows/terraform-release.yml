@@ -1,0 +1,22 @@
+name: Release
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - "**/*.tpl"
+      - "**/*.py"
+      - "**/*.tf"
+      - ".github/workflows/terraform-release.yml"
+
+jobs:
+  call-workflow:
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
+    uses: nexus-module/.github/.github/workflows/terraform-release.yml@main
+    secrets:
+      PAT_GITHUB: ${{ secrets.PAT_GITHUB }}
