@@ -5,7 +5,7 @@ module "wrapper" {
 
   cleanup        = try(each.value.cleanup, var.defaults.cleanup, null)
   component      = try(each.value.component, var.defaults.component, null)
-  deploy_policy  = try(each.value.deploy_policy, var.defaults.deploy_policy, "")
+  deploy_policy  = try(each.value.deploy_policy, var.defaults.deploy_policy, null)
   name           = try(each.value.name, var.defaults.name)
   online         = try(each.value.online, var.defaults.online, null)
   repodata_depth = try(each.value.repodata_depth, var.defaults.repodata_depth, null)

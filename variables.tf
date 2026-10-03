@@ -48,7 +48,7 @@ variable "nexus_repository_apt_proxy" {
     })
     negative_cache = optional(object({
       enabled = optional(bool)
-      ttl     = optional(string)
+      ttl     = optional(number)
     }))
     http_client = object({
       blocked    = bool
@@ -85,7 +85,7 @@ variable "nexus_repository_bower_group" {
     name   = string
     online = optional(bool)
     group = object({
-      member_names = set(string)
+      member_names = list(string)
     })
     storage = optional(object({
       blob_store_name                = string
@@ -126,6 +126,7 @@ variable "nexus_repository_bower_proxy" {
   type = list(object({
     name                 = string
     online               = optional(bool)
+    routing_rule         = optional(string)
     rewrite_package_urls = bool
     storage = object({
       blob_store_name                = string
@@ -138,7 +139,7 @@ variable "nexus_repository_bower_proxy" {
     })
     negative_cache = optional(object({
       enabled = optional(bool)
-      ttl     = optional(string)
+      ttl     = optional(number)
     }))
     http_client = object({
       blocked    = bool
@@ -175,7 +176,7 @@ variable "nexus_repository_cargo_group" {
     name   = string
     online = optional(bool)
     group = object({
-      member_names = set(string)
+      member_names = list(string)
     })
     storage = object({
       blob_store_name                = string
@@ -228,7 +229,7 @@ variable "nexus_repository_cargo_proxy" {
     })
     negative_cache = optional(object({
       enabled = optional(bool)
-      ttl     = optional(string)
+      ttl     = optional(number)
     }))
     http_client = object({
       blocked    = bool
@@ -262,8 +263,9 @@ variable "nexus_repository_cargo_proxy" {
 variable "nexus_repository_cocoapods_proxy" {
   description = "Repository Cocoapods Proxy."
   type = list(object({
-    name   = string
-    online = optional(bool)
+    name         = string
+    online       = optional(bool)
+    routing_rule = optional(string)
     storage = object({
       blob_store_name                = string
       strict_content_type_validation = optional(bool)
@@ -275,7 +277,7 @@ variable "nexus_repository_cocoapods_proxy" {
     })
     negative_cache = optional(object({
       enabled = optional(bool)
-      ttl     = optional(string)
+      ttl     = optional(number)
     }))
     http_client = object({
       blocked    = bool
@@ -309,8 +311,9 @@ variable "nexus_repository_cocoapods_proxy" {
 variable "nexus_repository_conan_proxy" {
   description = "value"
   type = list(object({
-    name   = string
-    online = optional(bool)
+    name         = string
+    online       = optional(bool)
+    routing_rule = optional(string)
     storage = object({
       blob_store_name                = string
       strict_content_type_validation = optional(bool)
@@ -322,7 +325,7 @@ variable "nexus_repository_conan_proxy" {
     })
     negative_cache = optional(object({
       enabled = optional(bool)
-      ttl     = optional(string)
+      ttl     = optional(number)
     }))
     http_client = object({
       blocked    = bool
@@ -356,8 +359,9 @@ variable "nexus_repository_conan_proxy" {
 variable "nexus_repository_conda_proxy" {
   description = "Repository Conda Proxy."
   type = list(object({
-    name   = string
-    online = optional(bool)
+    name         = string
+    online       = optional(bool)
+    routing_rule = optional(string)
     storage = object({
       blob_store_name                = string
       strict_content_type_validation = optional(bool)
@@ -369,7 +373,7 @@ variable "nexus_repository_conda_proxy" {
     })
     negative_cache = optional(object({
       enabled = optional(bool)
-      ttl     = optional(string)
+      ttl     = optional(number)
     }))
     http_client = object({
       blocked    = bool
@@ -406,14 +410,15 @@ variable "nexus_repository_docker_group" {
     name   = string
     online = optional(bool)
     docker = object({
-      force_basic_auth = bool
-      http_port        = optional(number)
-      https_port       = optional(number)
-      v1_enabled       = bool
-      subdomain        = optional(string)
+      force_basic_auth   = bool
+      http_port          = optional(number)
+      https_port         = optional(number)
+      v1_enabled         = bool
+      subdomain          = optional(string)
+      path_based_routing = optional(bool)
     })
     group = object({
-      member_names = set(string)
+      member_names = list(string)
     })
     storage = optional(object({
       blob_store_name                = string
@@ -432,16 +437,18 @@ variable "nexus_repository_docker_hosted" {
     name   = string
     online = optional(bool)
     docker = object({
-      force_basic_auth = bool
-      http_port        = optional(number)
-      https_port       = optional(number)
-      v1_enabled       = bool
-      subdomain        = optional(string)
+      force_basic_auth   = bool
+      http_port          = optional(number)
+      https_port         = optional(number)
+      v1_enabled         = bool
+      subdomain          = optional(string)
+      path_based_routing = optional(bool)
     })
     storage = object({
       blob_store_name                = string
       strict_content_type_validation = bool
       write_policy                   = optional(string)
+      latest_policy                  = optional(bool)
     })
     cleanup = optional(object({
       policy_names = optional(set(string))
@@ -459,18 +466,22 @@ variable "nexus_repository_docker_hosted" {
 variable "nexus_repository_docker_proxy" {
   description = "Repository Docker Proxy."
   type = list(object({
-    name   = string
-    online = optional(bool)
+    name         = string
+    online       = optional(bool)
+    routing_rule = optional(string)
     docker = object({
-      force_basic_auth = bool
-      http_port        = optional(number)
-      https_port       = optional(number)
-      v1_enabled       = bool
-      subdomain        = optional(string)
+      force_basic_auth   = bool
+      http_port          = optional(number)
+      https_port         = optional(number)
+      v1_enabled         = bool
+      subdomain          = optional(string)
+      path_based_routing = optional(bool)
     })
     docker_proxy = object({
-      index_type = string
-      index_url  = optional(string)
+      index_type                  = string
+      index_url                   = optional(string)
+      cache_foreign_layers        = optional(bool)
+      foreign_layer_url_whitelist = optional(set(string))
     })
     storage = object({
       blob_store_name                = string
@@ -483,7 +494,7 @@ variable "nexus_repository_docker_proxy" {
     })
     negative_cache = optional(object({
       enabled = optional(bool)
-      ttl     = optional(string)
+      ttl     = optional(number)
     }))
     http_client = object({
       blocked    = bool
@@ -521,7 +532,7 @@ variable "nexus_repository_gitlfs_hosted" {
     online = optional(bool)
     storage = optional(object({
       blob_store_name                = string
-      strict_content_type_validation = optional(bool)
+      strict_content_type_validation = bool
     }))
     cleanup = optional(object({
       policy_names = optional(set(string))
@@ -543,7 +554,7 @@ variable "nexus_repository_go_group" {
     name   = string
     online = optional(bool)
     group = object({
-      member_names = optional(set(string))
+      member_names = list(string)
     })
     storage = optional(object({
       blob_store_name                = string
@@ -573,7 +584,7 @@ variable "nexus_repository_go_proxy" {
     })
     negative_cache = optional(object({
       enabled = optional(bool)
-      ttl     = optional(string)
+      ttl     = optional(number)
     }))
     http_client = object({
       blocked    = bool
@@ -643,7 +654,7 @@ variable "nexus_repository_helm_proxy" {
     })
     negative_cache = optional(object({
       enabled = optional(bool)
-      ttl     = optional(string)
+      ttl     = optional(number)
     }))
     http_client = object({
       blocked    = bool
@@ -680,7 +691,7 @@ variable "nexus_repository_maven_group" {
     name   = string
     online = optional(bool)
     group = object({
-      member_names = set(string)
+      member_names = list(string)
     })
     storage = optional(object({
       blob_store_name                = string
@@ -737,7 +748,7 @@ variable "nexus_repository_maven_proxy" {
     })
     negative_cache = optional(object({
       enabled = optional(bool)
-      ttl     = optional(string)
+      ttl     = optional(number)
     }))
     http_client = object({
       blocked    = bool
@@ -779,7 +790,7 @@ variable "nexus_repository_npm_group" {
     name   = string
     online = optional(bool)
     group = object({
-      member_names = set(string)
+      member_names = list(string)
     })
     storage = optional(object({
       blob_store_name                = string
@@ -841,7 +852,7 @@ variable "nexus_repository_npm_proxy" {
     })
     negative_cache = optional(object({
       enabled = optional(bool)
-      ttl     = optional(string)
+      ttl     = optional(number)
     }))
     remove_non_cataloged = optional(bool)
     remove_quarantined   = optional(bool)
@@ -880,7 +891,7 @@ variable "nexus_repository_nuget_group" {
     name   = string
     online = optional(bool)
     group = object({
-      member_names = set(string)
+      member_names = list(string)
     })
     storage = optional(object({
       blob_store_name                = string
@@ -934,7 +945,7 @@ variable "nexus_repository_nuget_proxy" {
     })
     negative_cache = optional(object({
       enabled = optional(bool)
-      ttl     = optional(string)
+      ttl     = optional(number)
     }))
     http_client = object({
       blocked    = bool
@@ -982,7 +993,7 @@ variable "nexus_repository_p2_proxy" {
     })
     negative_cache = optional(object({
       enabled = optional(bool)
-      ttl     = optional(string)
+      ttl     = optional(number)
     }))
     http_client = object({
       blocked    = bool
@@ -1019,7 +1030,7 @@ variable "nexus_repository_pypi_group" {
     name   = string
     online = optional(bool)
     group = object({
-      member_names = set(string)
+      member_names = list(string)
     })
     storage = optional(object({
       blob_store_name                = string
@@ -1071,7 +1082,7 @@ variable "nexus_repository_pypi_proxy" {
     })
     negative_cache = optional(object({
       enabled = optional(bool)
-      ttl     = optional(string)
+      ttl     = optional(number)
     }))
     http_client = object({
       blocked    = bool
@@ -1108,7 +1119,7 @@ variable "nexus_repository_r_group" {
     name   = string
     online = optional(bool)
     group = object({
-      member_names = set(string)
+      member_names = list(string)
     })
     storage = optional(object({
       blob_store_name                = string
@@ -1160,7 +1171,7 @@ variable "nexus_repository_r_proxy" {
     })
     negative_cache = optional(object({
       enabled = optional(bool)
-      ttl     = optional(string)
+      ttl     = optional(number)
     }))
     http_client = object({
       blocked    = bool
@@ -1197,7 +1208,7 @@ variable "nexus_repository_raw_group" {
     name   = string
     online = optional(bool)
     group = object({
-      member_names = set(string)
+      member_names = list(string)
     })
     storage = optional(object({
       blob_store_name                = string
@@ -1249,7 +1260,7 @@ variable "nexus_repository_raw_proxy" {
     })
     negative_cache = optional(object({
       enabled = optional(bool)
-      ttl     = optional(string)
+      ttl     = optional(number)
     }))
     http_client = object({
       blocked    = bool
@@ -1286,7 +1297,7 @@ variable "nexus_repository_rubygems_group" {
     name   = string
     online = optional(bool)
     group = object({
-      member_names = set(string)
+      member_names = list(string)
     })
     storage = optional(object({
       blob_store_name                = string
@@ -1338,7 +1349,7 @@ variable "nexus_repository_rubygems_proxy" {
     })
     negative_cache = optional(object({
       enabled = optional(bool)
-      ttl     = optional(string)
+      ttl     = optional(number)
     }))
     http_client = object({
       blocked    = bool
@@ -1375,11 +1386,15 @@ variable "nexus_repository_yum_group" {
     name   = string
     online = optional(bool)
     group = object({
-      member_names = set(string)
+      member_names = list(string)
     })
     storage = optional(object({
       blob_store_name                = string
       strict_content_type_validation = optional(bool)
+    }))
+    yum_signing = optional(object({
+      keypair    = string
+      passphrase = optional(string)
     }))
   }))
   default = []
@@ -1429,7 +1444,7 @@ variable "nexus_repository_yum_proxy" {
     })
     negative_cache = optional(object({
       enabled = optional(bool)
-      ttl     = optional(string)
+      ttl     = optional(number)
     }))
     http_client = object({
       blocked    = bool
@@ -1452,6 +1467,10 @@ variable "nexus_repository_yum_proxy" {
     })
     cleanup = optional(object({
       policy_names = optional(set(string))
+    }))
+    yum_signing = optional(object({
+      keypair    = string
+      passphrase = optional(string)
     }))
   }))
   default = []

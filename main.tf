@@ -79,6 +79,8 @@ module "nexus_repository_bower_proxy" {
   proxy                = each.value.proxy
   negative_cache       = each.value.negative_cache
   http_client          = each.value.http_client
+  routing_rule         = each.value.routing_rule
+  cleanup              = each.value.cleanup
 }
 
 ################################################################################
@@ -142,6 +144,8 @@ module "nexus_repository_cocoapods_proxy" {
   proxy          = each.value.proxy
   negative_cache = each.value.negative_cache
   http_client    = each.value.http_client
+  routing_rule   = each.value.routing_rule
+  cleanup        = each.value.cleanup
 }
 
 ################################################################################
@@ -158,6 +162,8 @@ module "nexus_repository_conan_proxy" {
   proxy          = each.value.proxy
   negative_cache = each.value.negative_cache
   http_client    = each.value.http_client
+  routing_rule   = each.value.routing_rule
+  cleanup        = each.value.cleanup
 }
 
 ################################################################################
@@ -174,6 +180,8 @@ module "nexus_repository_conda_proxy" {
   proxy          = each.value.proxy
   negative_cache = each.value.negative_cache
   http_client    = each.value.http_client
+  routing_rule   = each.value.routing_rule
+  cleanup        = each.value.cleanup
 }
 
 ################################################################################
@@ -223,6 +231,8 @@ module "nexus_repository_docker_proxy" {
   proxy          = each.value.proxy
   negative_cache = each.value.negative_cache
   http_client    = each.value.http_client
+  routing_rule   = each.value.routing_rule
+  cleanup        = each.value.cleanup
 }
 
 ################################################################################
@@ -268,6 +278,8 @@ module "nexus_repository_go_proxy" {
   proxy          = each.value.proxy
   negative_cache = each.value.negative_cache
   http_client    = each.value.http_client
+  routing_rule   = each.value.routing_rule
+  cleanup        = each.value.cleanup
 }
 
 ################################################################################
@@ -299,6 +311,8 @@ module "nexus_repository_helm_proxy" {
   proxy          = each.value.proxy
   negative_cache = each.value.negative_cache
   http_client    = each.value.http_client
+  routing_rule   = each.value.routing_rule
+  cleanup        = each.value.cleanup
 }
 
 ################################################################################
@@ -346,6 +360,8 @@ module "nexus_repository_maven_proxy" {
   negative_cache = each.value.negative_cache
   http_client    = each.value.http_client
   maven          = each.value.maven
+  routing_rule   = each.value.routing_rule
+  cleanup        = each.value.cleanup
 }
 
 ################################################################################
@@ -385,12 +401,16 @@ module "nexus_repository_npm_proxy" {
 
   for_each = { for r in var.nexus_repository_npm_proxy : r.name => r }
 
-  name           = each.value.name
-  online         = each.value.online
-  storage        = each.value.storage
-  proxy          = each.value.proxy
-  negative_cache = each.value.negative_cache
-  http_client    = each.value.http_client
+  name                 = each.value.name
+  online               = each.value.online
+  storage              = each.value.storage
+  proxy                = each.value.proxy
+  negative_cache       = each.value.negative_cache
+  http_client          = each.value.http_client
+  routing_rule         = each.value.routing_rule
+  cleanup              = each.value.cleanup
+  remove_quarantined   = each.value.remove_quarantined
+  remove_non_cataloged = each.value.remove_non_cataloged
 }
 
 ################################################################################
@@ -438,6 +458,8 @@ module "nexus_repository_nuget_proxy" {
   proxy                    = each.value.proxy
   negative_cache           = each.value.negative_cache
   http_client              = each.value.http_client
+  routing_rule             = each.value.routing_rule
+  cleanup                  = each.value.cleanup
 }
 
 ################################################################################
@@ -454,6 +476,8 @@ module "nexus_repository_p2_proxy" {
   proxy          = each.value.proxy
   negative_cache = each.value.negative_cache
   http_client    = each.value.http_client
+  routing_rule   = each.value.routing_rule
+  cleanup        = each.value.cleanup
 }
 
 ################################################################################
@@ -499,6 +523,8 @@ module "nexus_repository_pypi_proxy" {
   proxy          = each.value.proxy
   negative_cache = each.value.negative_cache
   http_client    = each.value.http_client
+  routing_rule   = each.value.routing_rule
+  cleanup        = each.value.cleanup
 }
 
 ################################################################################
@@ -544,7 +570,8 @@ module "nexus_repository_r_proxy" {
   proxy          = each.value.proxy
   negative_cache = each.value.negative_cache
   http_client    = each.value.http_client
-
+  routing_rule   = each.value.routing_rule
+  cleanup        = each.value.cleanup
 }
 
 ################################################################################
@@ -590,6 +617,8 @@ module "nexus_repository_raw_proxy" {
   proxy          = each.value.proxy
   negative_cache = each.value.negative_cache
   http_client    = each.value.http_client
+  routing_rule   = each.value.routing_rule
+  cleanup        = each.value.cleanup
 }
 
 ################################################################################
@@ -635,6 +664,8 @@ module "nexus_repository_rubygems_proxy" {
   proxy          = each.value.proxy
   negative_cache = each.value.negative_cache
   http_client    = each.value.http_client
+  routing_rule   = each.value.routing_rule
+  cleanup        = each.value.cleanup
 }
 
 ################################################################################
@@ -645,10 +676,11 @@ module "nexus_repository_yum_group" {
 
   for_each = { for r in var.nexus_repository_yum_group : r.name => r }
 
-  name    = each.value.name
-  online  = each.value.online
-  group   = each.value.group
-  storage = each.value.storage
+  name        = each.value.name
+  online      = each.value.online
+  group       = each.value.group
+  storage     = each.value.storage
+  yum_signing = each.value.yum_signing
 }
 
 ################################################################################
@@ -682,4 +714,7 @@ module "nexus_repository_yum_proxy" {
   proxy          = each.value.proxy
   negative_cache = each.value.negative_cache
   http_client    = each.value.http_client
+  routing_rule   = each.value.routing_rule
+  cleanup        = each.value.cleanup
+  yum_signing    = each.value.yum_signing
 }

@@ -16,24 +16,28 @@ variable "routing_rule" {
   description = "The name of the routing rule assigned to this repository."
   type        = string
   default     = ""
+  nullable    = false
 }
 
 variable "docker" {
   description = "docker contains the configuration of the docker repository"
   type = object({
-    force_basic_auth = bool
-    http_port        = optional(number)
-    https_port       = optional(number)
-    v1_enabled       = bool
-    subdomain        = optional(string)
+    force_basic_auth   = bool
+    http_port          = optional(number)
+    https_port         = optional(number)
+    v1_enabled         = bool
+    subdomain          = optional(string)
+    path_based_routing = optional(bool)
   })
 }
 
 variable "docker_proxy" {
   description = "docker contains the configuration of the docker repository"
   type = object({
-    index_type = string
-    index_url  = optional(string)
+    index_type                  = string
+    index_url                   = optional(string)
+    cache_foreign_layers        = optional(bool)
+    foreign_layer_url_whitelist = optional(set(string))
   })
 }
 
@@ -55,12 +59,13 @@ variable "proxy" {
 }
 
 variable "negative_cache" {
-  description = "Configuration of the negative cache handling"
+  description = "Configuration of the negative cache handling. Defaults to enabled with a 1440 minute TTL."
   type = object({
-    enabled = optional(bool)
-    ttl     = optional(string)
+    enabled = optional(bool, true)
+    ttl     = optional(number, 1440)
   })
-  default = null
+  default  = {}
+  nullable = false
 }
 
 variable "http_client" {

@@ -16,6 +16,7 @@ variable "routing_rule" {
   description = "The name of the routing rule assigned to this repository."
   type        = string
   default     = ""
+  nullable    = false
 }
 
 variable "storage" {
@@ -35,23 +36,23 @@ variable "proxy" {
   })
 }
 
-#variable "yum_signing" {
-#  description = "Contains signing data of repositories."
-#  type = object({
-#    keypair    = string
-#    passphrase = optional(string)
-#  })
-#  sensitive = true
-#  default   = null
-#}
-
-variable "negative_cache" {
-  description = "Configuration of the negative cache handling"
+variable "yum_signing" {
+  description = "Contains signing data of repositories. The keypair is stored in Terraform state."
   type = object({
-    enabled = optional(bool)
-    ttl     = optional(string)
+    keypair    = string
+    passphrase = optional(string)
   })
   default = null
+}
+
+variable "negative_cache" {
+  description = "Configuration of the negative cache handling. Defaults to enabled with a 1440 minute TTL."
+  type = object({
+    enabled = optional(bool, true)
+    ttl     = optional(number, 1440)
+  })
+  default  = {}
+  nullable = false
 }
 
 variable "http_client" {

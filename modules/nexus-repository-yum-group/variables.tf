@@ -15,19 +15,18 @@ variable "online" {
 variable "group" {
   description = "Configuration for repository group"
   type = object({
-    member_names = set(string)
+    member_names = list(string)
   })
 }
 
-#variable "yum_signing" {
-#  description = "Contains signing data of repositories."
-#  type = object({
-#    keypair    = string
-#    passphrase = optional(string)
-#  })
-#  sensitive = true
-#  default   = null
-#}
+variable "yum_signing" {
+  description = "Contains signing data of repositories. The keypair is stored in Terraform state."
+  type = object({
+    keypair    = string
+    passphrase = optional(string)
+  })
+  default = null
+}
 
 variable "storage" {
   description = "The storage configuration of the repository"

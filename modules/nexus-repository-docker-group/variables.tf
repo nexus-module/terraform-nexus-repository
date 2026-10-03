@@ -15,18 +15,19 @@ variable "online" {
 variable "docker" {
   description = "docker contains the configuration of the docker repository"
   type = object({
-    force_basic_auth = bool
-    http_port        = optional(number)
-    https_port       = optional(number)
-    v1_enabled       = bool
-    subdomain        = optional(string)
+    force_basic_auth   = bool
+    http_port          = optional(number)
+    https_port         = optional(number)
+    v1_enabled         = bool
+    subdomain          = optional(string)
+    path_based_routing = optional(bool)
   })
 }
 
 variable "group" {
   description = "Configuration for repository group"
   type = object({
-    member_names    = set(string)
+    member_names    = list(string)
     writable_member = optional(string)
   })
 }

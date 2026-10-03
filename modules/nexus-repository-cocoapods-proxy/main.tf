@@ -17,13 +17,9 @@ resource "nexus_repository_cocoapods_proxy" "main" {
     metadata_max_age = var.proxy.metadata_max_age
   }
 
-  dynamic "negative_cache" {
-    for_each = var.negative_cache != null ? [var.negative_cache] : []
-
-    content {
-      enabled = var.negative_cache.enabled
-      ttl     = var.negative_cache.ttl
-    }
+  negative_cache {
+    enabled = var.negative_cache.enabled
+    ttl     = var.negative_cache.ttl
   }
 
   http_client {
@@ -47,9 +43,11 @@ resource "nexus_repository_cocoapods_proxy" "main" {
       for_each = var.http_client.authentication != null ? [var.http_client.authentication] : []
 
       content {
-        type     = var.http_client.authentication.type
-        username = var.http_client.authentication.username
-        password = var.http_client.authentication.password
+        type        = var.http_client.authentication.type
+        username    = var.http_client.authentication.username
+        password    = var.http_client.authentication.password
+        ntlm_host   = var.http_client.authentication.ntlm_host
+        ntlm_domain = var.http_client.authentication.ntlm_domain
       }
     }
   }

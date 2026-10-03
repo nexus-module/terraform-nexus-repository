@@ -15,7 +15,7 @@ variable "online" {
 variable "group" {
   description = "Configuration for repository group"
   type = object({
-    member_names    = set(string)
+    member_names    = list(string)
     writable_member = optional(string)
   })
 }

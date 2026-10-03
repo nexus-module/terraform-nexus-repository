@@ -16,7 +16,7 @@ variable "storage" {
   description = "The storage configuration of the repository"
   type = object({
     blob_store_name                = string
-    strict_content_type_validation = optional(bool)
+    strict_content_type_validation = bool
     write_policy                   = optional(string)
   })
 }

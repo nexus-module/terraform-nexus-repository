@@ -7,15 +7,19 @@ resource "nexus_repository_docker_proxy" "main" {
   routing_rule = var.routing_rule
 
   docker {
-    force_basic_auth = var.docker.force_basic_auth
-    http_port        = var.docker.http_port
-    https_port       = var.docker.https_port
-    v1_enabled       = var.docker.v1_enabled
-    subdomain        = var.docker.subdomain
+    force_basic_auth   = var.docker.force_basic_auth
+    http_port          = var.docker.http_port
+    https_port         = var.docker.https_port
+    v1_enabled         = var.docker.v1_enabled
+    subdomain          = var.docker.subdomain
+    path_based_routing = var.docker.path_based_routing
   }
 
   docker_proxy {
-    index_type = var.docker_proxy.index_type
+    index_type                  = var.docker_proxy.index_type
+    index_url                   = var.docker_proxy.index_url
+    cache_foreign_layers        = var.docker_proxy.cache_foreign_layers
+    foreign_layer_url_whitelist = var.docker_proxy.foreign_layer_url_whitelist
   }
 
   storage {
@@ -29,13 +33,9 @@ resource "nexus_repository_docker_proxy" "main" {
     metadata_max_age = var.proxy.metadata_max_age
   }
 
-  dynamic "negative_cache" {
-    for_each = var.negative_cache != null ? [var.negative_cache] : []
-
-    content {
-      enabled = var.negative_cache.enabled
-      ttl     = var.negative_cache.ttl
-    }
+  negative_cache {
+    enabled = var.negative_cache.enabled
+    ttl     = var.negative_cache.ttl
   }
 
   http_client {

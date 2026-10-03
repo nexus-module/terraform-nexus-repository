@@ -6,11 +6,12 @@ resource "nexus_repository_docker_group" "main" {
   online = var.online
 
   docker {
-    force_basic_auth = var.docker.force_basic_auth
-    http_port        = var.docker.http_port
-    https_port       = var.docker.https_port
-    v1_enabled       = var.docker.v1_enabled
-    subdomain        = var.docker.subdomain
+    force_basic_auth   = var.docker.force_basic_auth
+    http_port          = var.docker.http_port
+    https_port         = var.docker.https_port
+    v1_enabled         = var.docker.v1_enabled
+    subdomain          = var.docker.subdomain
+    path_based_routing = var.docker.path_based_routing
   }
 
   group {

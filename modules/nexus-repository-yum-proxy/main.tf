@@ -17,21 +17,18 @@ resource "nexus_repository_yum_proxy" "main" {
     metadata_max_age = var.proxy.metadata_max_age
   }
 
-  #dynamic "yum_signing" {
-  #  for_each = var.yum_signing != null ? [var.yum_signing] : []
-  #  content {
-  #    keypair    = var.signing.keypair
-  #    passphrase = var.signing.passphrase
-  #  }
-  #}
-
-  dynamic "negative_cache" {
-    for_each = var.negative_cache != null ? [var.negative_cache] : []
+  dynamic "yum_signing" {
+    for_each = var.yum_signing != null ? [var.yum_signing] : []
 
     content {
-      enabled = var.negative_cache.enabled
-      ttl     = var.negative_cache.ttl
+      keypair    = yum_signing.value.keypair
+      passphrase = yum_signing.value.passphrase
     }
+  }
+
+  negative_cache {
+    enabled = var.negative_cache.enabled
+    ttl     = var.negative_cache.ttl
   }
 
   http_client {

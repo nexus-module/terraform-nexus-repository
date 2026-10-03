@@ -5,14 +5,14 @@ resource "nexus_repository_yum_group" "main" {
   name   = var.name
   online = var.online
 
-  #dynamic "yum_signing" {
-  #  for_each = var.yum_signing != null ? [var.yum_signing] : []
-  #
-  #  content {
-  #    keypair    = var.signing.keypair
-  #    passphrase = var.signing.passphrase
-  #  }
-  #}
+  dynamic "yum_signing" {
+    for_each = var.yum_signing != null ? [var.yum_signing] : []
+
+    content {
+      keypair    = yum_signing.value.keypair
+      passphrase = yum_signing.value.passphrase
+    }
+  }
 
   group {
     member_names = var.group.member_names

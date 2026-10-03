@@ -15,7 +15,7 @@ variable "online" {
 variable "deploy_policy" {
   description = "Validate that all paths are RPMs or yum metadata."
   type        = string
-  default     = ""
+  default     = null
 }
 
 variable "repodata_depth" {

@@ -17,13 +17,9 @@ resource "nexus_repository_helm_proxy" "main" {
     metadata_max_age = var.proxy.metadata_max_age
   }
 
-  dynamic "negative_cache" {
-    for_each = var.negative_cache != null ? [var.negative_cache] : []
-
-    content {
-      enabled = var.negative_cache.enabled
-      ttl     = var.negative_cache.ttl
-    }
+  negative_cache {
+    enabled = var.negative_cache.enabled
+    ttl     = var.negative_cache.ttl
   }
 
   http_client {

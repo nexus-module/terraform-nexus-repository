@@ -6,7 +6,7 @@ module "wrapper" {
   cleanup                  = try(each.value.cleanup, var.defaults.cleanup, null)
   http_client              = try(each.value.http_client, var.defaults.http_client)
   name                     = try(each.value.name, var.defaults.name)
-  negative_cache           = try(each.value.negative_cache, var.defaults.negative_cache, null)
+  negative_cache           = try(each.value.negative_cache, var.defaults.negative_cache, {})
   nuget_version            = try(each.value.nuget_version, var.defaults.nuget_version)
   online                   = try(each.value.online, var.defaults.online, null)
   proxy                    = try(each.value.proxy, var.defaults.proxy)

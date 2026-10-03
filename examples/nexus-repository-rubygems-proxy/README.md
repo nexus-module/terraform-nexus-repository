@@ -33,7 +33,7 @@ No inputs.
 ## Requirements
 
 | Name | Version |
-|------|---------|
+| ---- | ------- |
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.3.0 |
 | <a name="requirement_nexus"></a> [nexus](#requirement\_nexus) | >= 3.0.0 |
 
@@ -44,7 +44,7 @@ No providers.
 ## Modules
 
 | Name | Source | Version |
-|------|--------|---------|
+| ---- | ------ | ------- |
 | <a name="module_nexus_repository_rubygems_proxy"></a> [nexus\_repository\_rubygems\_proxy](#module\_nexus\_repository\_rubygems\_proxy) | ../../modules/nexus-repository-rubygems-proxy | n/a |
 
 ## Resources
@@ -58,6 +58,6 @@ No inputs.
 ## Outputs
 
 | Name | Description |
-|------|-------------|
+| ---- | ----------- |
 | <a name="output_name"></a> [name](#output\_name) | The name of the resource. |
 <!-- END_TF_DOCS -->

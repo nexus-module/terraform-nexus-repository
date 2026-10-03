@@ -6,17 +6,19 @@ resource "nexus_repository_docker_hosted" "main" {
   online = var.online
 
   docker {
-    force_basic_auth = var.docker.force_basic_auth
-    http_port        = var.docker.http_port
-    https_port       = var.docker.https_port
-    v1_enabled       = var.docker.v1_enabled
-    subdomain        = var.docker.subdomain
+    force_basic_auth   = var.docker.force_basic_auth
+    http_port          = var.docker.http_port
+    https_port         = var.docker.https_port
+    v1_enabled         = var.docker.v1_enabled
+    subdomain          = var.docker.subdomain
+    path_based_routing = var.docker.path_based_routing
   }
 
   storage {
     blob_store_name                = var.storage.blob_store_name
     strict_content_type_validation = var.storage.strict_content_type_validation
     write_policy                   = var.storage.write_policy
+    latest_policy                  = var.storage.latest_policy
   }
 
   dynamic "cleanup" {

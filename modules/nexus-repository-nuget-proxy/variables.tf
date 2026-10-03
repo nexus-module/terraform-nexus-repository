@@ -16,6 +16,7 @@ variable "routing_rule" {
   description = "The name of the routing rule assigned to this repository."
   type        = string
   default     = ""
+  nullable    = false
 }
 
 variable "nuget_version" {
@@ -46,12 +47,13 @@ variable "proxy" {
 }
 
 variable "negative_cache" {
-  description = "Configuration of the negative cache handling"
+  description = "Configuration of the negative cache handling. Defaults to enabled with a 1440 minute TTL."
   type = object({
-    enabled = optional(bool)
-    ttl     = optional(string)
+    enabled = optional(bool, true)
+    ttl     = optional(number, 1440)
   })
-  default = null
+  default  = {}
+  nullable = false
 }
 
 variable "http_client" {

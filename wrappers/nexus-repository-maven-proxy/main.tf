@@ -7,7 +7,7 @@ module "wrapper" {
   http_client    = try(each.value.http_client, var.defaults.http_client)
   maven          = try(each.value.maven, var.defaults.maven)
   name           = try(each.value.name, var.defaults.name)
-  negative_cache = try(each.value.negative_cache, var.defaults.negative_cache, null)
+  negative_cache = try(each.value.negative_cache, var.defaults.negative_cache, {})
   online         = try(each.value.online, var.defaults.online, null)
   proxy          = try(each.value.proxy, var.defaults.proxy)
   routing_rule   = try(each.value.routing_rule, var.defaults.routing_rule, "")
