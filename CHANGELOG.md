@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.3.0](https://github.com/nexus-module/terraform-nexus-repository/compare/v1.2.0...v1.3.0) (2026-10-03)
+
+
+### Features
+
+* add tests and submodules ([562cbd6](https://github.com/nexus-module/terraform-nexus-repository/commit/562cbd67ea491e9f61660fdaf5d30238bbf8770f))
+
+
+### Bug Fixes
+
+* **deps:** bump datadrivers/nexus ([#21](https://github.com/nexus-module/terraform-nexus-repository/issues/21)) ([5a4b38d](https://github.com/nexus-module/terraform-nexus-repository/commit/5a4b38d574e9401b19bf69604a370783348d42f6))
+
 ## [1.2.0](https://github.com/nexus-module/terraform-nexus-repository/compare/v1.1.0...v1.2.0) (2026-08-22)
 
 
